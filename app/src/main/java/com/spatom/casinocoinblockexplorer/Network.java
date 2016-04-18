@@ -49,8 +49,6 @@ public class Network extends AppCompatActivity {
 
     private JSONObject row_1;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +62,6 @@ public class Network extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
 
         mDrawerList = (ListView) findViewById(R.id.navList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -96,12 +93,13 @@ public class Network extends AppCompatActivity {
                         try {
 
                             JSONObject obj = new JSONObject(jsonData);
-                            System.out.println(jsonData);
                             Object row1 = obj.getJSONArray("data").get(0);
                             row_1 = (JSONObject) row1;
                             runGetData();
                         } catch (Throwable t) {
                             System.out.println("nojson");
+                            Toast.makeText(Network.this, "Error with Service, Please Reload.", Toast.LENGTH_SHORT).show();
+
                         }
                     } else {
                         alertUserAboutError();
@@ -109,13 +107,11 @@ public class Network extends AppCompatActivity {
                 } catch (IOException e) {
                     Log.e(TAG, "x", e);
                 }
-
             }
         });
     }
 
     private void runGetData() {
-
 
         runOnUiThread(new Runnable() {
             @Override
@@ -142,15 +138,11 @@ public class Network extends AppCompatActivity {
                 networkCoinSupply.setText(supply);
                 networkLastPrice.setText(price.toString());
                 networkBlockCount.setText(block);
-
             }
         });
-
-
     }
 
     private void alertUserAboutError() {
-
 
     }
 
@@ -162,8 +154,6 @@ public class Network extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Network.this, "ok", Toast.LENGTH_SHORT).show();
-                System.out.println(id);
                 if(id == 0) {
                     finish();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

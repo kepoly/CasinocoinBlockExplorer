@@ -37,7 +37,6 @@ import okhttp3.Response;
 
 public class Transactions extends AppCompatActivity {
 
-
     public final String TAG = MainActivity.class.getSimpleName();
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
@@ -49,8 +48,6 @@ public class Transactions extends AppCompatActivity {
     private EditText enterInfo;
 
     private JSONObject row_1;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,15 +81,12 @@ public class Transactions extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(jsonData);
-
                             Object row1 = obj;
-
                             row_1 = (JSONObject) row1;
-
-                            System.out.println(row_1);
-
                         } catch (Throwable t) {
                             System.out.println("nojson");
+                            Toast.makeText(Transactions.this, "Error with Service, Please Reload.", Toast.LENGTH_SHORT).show();
+
                         }
 
                     } else {
@@ -102,16 +96,11 @@ public class Transactions extends AppCompatActivity {
                     Log.e(TAG, "x", e);
                 }
 
-
                 latest = (TableLayout) findViewById(R.id.latest_trans);
-
-
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-
 
                         TextView col1 = new TextView(Transactions.this);
                         TextView col2 = new TextView(Transactions.this);
@@ -119,9 +108,6 @@ public class Transactions extends AppCompatActivity {
                         TextView col4 = new TextView(Transactions.this);
                         TextView col5 = new TextView(Transactions.this);
                         try {
-
-
-
 
                             col1.setText(row_1.getString("blockhash").toString());
                             col1.setTextColor(Color.BLUE);
@@ -147,21 +133,15 @@ public class Transactions extends AppCompatActivity {
                         row.addView(col3, lp);
                         row.addView(col4, lp);
                         row.addView(col5, lp);
-
-
                         latest.addView(row, 1);
-
                     }
                 });
             }
         });
 
-
-
         /*
         *TABLE
         */
-
         mDrawerList = (ListView) findViewById(R.id.navList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
@@ -223,9 +203,6 @@ public class Transactions extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-
-
-
                 try {
                     String jsonData = response.body().string();
                     Log.v(TAG, jsonData);
@@ -235,13 +212,11 @@ public class Transactions extends AppCompatActivity {
                             JSONObject obj = new JSONObject(jsonData);
 
                             Object row1 = obj;
-
-
                             row_1 = (JSONObject) row1;
-                            System.out.println(row_1);
-
                         } catch (Throwable t) {
                             System.out.println("nojson");
+                            Toast.makeText(Transactions.this, "Error with Service, Please Reload.", Toast.LENGTH_SHORT).show();
+
                         }
 
                     } else {
@@ -251,16 +226,11 @@ public class Transactions extends AppCompatActivity {
                     Log.e(TAG, "x", e);
                 }
 
-
                 latest = (TableLayout) findViewById(R.id.latest_trans);
-
-
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-
 
                         TextView col1 = new TextView(Transactions.this);
                         TextView col2 = new TextView(Transactions.this);
@@ -293,28 +263,15 @@ public class Transactions extends AppCompatActivity {
                         row.addView(col3, lp);
                         row.addView(col4, lp);
                         row.addView(col5, lp);
-
-
                         latest.addView(row, 1);
-
                     }
                 });
             }
         });
     }
-
-
-
-
-
     private void alertUserAboutError() {
 
-
     }
-
-
-
-
 
      /* INSERT INTO THE DRAWER */
 
@@ -326,8 +283,6 @@ public class Transactions extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Transactions.this, "ok", Toast.LENGTH_SHORT).show();
-                System.out.println(id);
                 if(id == 0) {
                     finish();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

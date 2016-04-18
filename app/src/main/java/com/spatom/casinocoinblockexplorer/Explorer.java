@@ -61,6 +61,7 @@ public class Explorer extends AppCompatActivity {
         setContentView(R.layout.activity_explorer);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        Toast.makeText(Explorer.this, "Swipe right to open Drawer", Toast.LENGTH_SHORT).show();
 
         //START THE HTTP CALL TO GET JSON
         String url = "http://csc.blockexp.info/ext/getlasttxs/5/30";
@@ -99,10 +100,10 @@ public class Explorer extends AppCompatActivity {
                             row_5 = (JSONObject) row5;
 
                             row_1.get("txid");
-                            System.out.println(row_1);
 
                         } catch (Throwable t) {
                             System.out.println("nojson");
+                            Toast.makeText(Explorer.this, "Error with Service, Please Reload.", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
@@ -128,6 +129,9 @@ public class Explorer extends AppCompatActivity {
                         TextView col3 = new TextView(Explorer.this);
                         TextView col4 = new TextView(Explorer.this);
                         TextView col5 = new TextView(Explorer.this);
+
+                        Float total;
+                        String finalTotal = "err";
                         try {
                             if(i == 0) {
                                 col1.setText(row_1.get("txid").toString());
@@ -211,8 +215,6 @@ public class Explorer extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Explorer.this, "ok", Toast.LENGTH_SHORT).show();
-                System.out.println(id);
                 if(id == 0) {
                     finish();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

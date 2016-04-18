@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         homeCreditsButton = (Button) findViewById(R.id.home_credits_button);
         homeExplorerButton = (Button) findViewById(R.id.home_explorer_button);
         homeSettingsButton = (Button) findViewById(R.id.home_settings_button);
@@ -57,13 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
-
-
-
 
 }

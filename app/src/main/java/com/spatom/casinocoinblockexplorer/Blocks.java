@@ -36,7 +36,6 @@ import okhttp3.Response;
 
 public class Blocks extends AppCompatActivity {
 
-
     public final String TAG = MainActivity.class.getSimpleName();
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
@@ -52,8 +51,6 @@ public class Blocks extends AppCompatActivity {
     private JSONObject row_3;
     private JSONObject row_4;
     private JSONObject row_5;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,18 +82,13 @@ public class Blocks extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(jsonData);
-
                             Object row1 = obj;
-
-
                             row_1 = (JSONObject) row1;
-
-
-
-                            System.out.println(row_1);
 
                         } catch (Throwable t) {
                             System.out.println("nojson");
+                            Toast.makeText(Blocks.this, "Error with Service, Please Reload.", Toast.LENGTH_SHORT).show();
+
                         }
 
                     } else {
@@ -106,24 +98,16 @@ public class Blocks extends AppCompatActivity {
                     Log.e(TAG, "x", e);
                 }
 
-
                 latest = (TableLayout) findViewById(R.id.latest_hash);
-
-
-
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-
-
                             TextView col1 = new TextView(Blocks.this);
                             TextView col2 = new TextView(Blocks.this);
                             TextView col3 = new TextView(Blocks.this);
                             TextView col4 = new TextView(Blocks.this);
                             TextView col5 = new TextView(Blocks.this);
                             try {
-
                                     col1.setText(row_1.getString("hash").toString());
                                     col1.setTextColor(Color.BLUE);
                                     col2.setText(row_1.getString("height").toString());
@@ -134,11 +118,9 @@ public class Blocks extends AppCompatActivity {
                                     col4.setTextColor(Color.BLUE);
                                     col5.setText(row_1.getString("difficulty").toString());
                                     col5.setTextColor(Color.BLUE);
-
                             } catch (Throwable e) {
                                 System.out.println("bad");
                             }
-
                         TableRow row = new TableRow(Blocks.this);
                         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
                         lp.setMargins(50, 10, 175, 10);
@@ -148,20 +130,11 @@ public class Blocks extends AppCompatActivity {
                             row.addView(col3, lp);
                             row.addView(col4, lp);
                             row.addView(col5, lp);
-
-
                             latest.addView(row, 1);
-
                     }
                 });
-
-
-
-
             }
         });
-
-
 
         /*
         *TABLE
@@ -222,12 +195,8 @@ public class Blocks extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
 
             }
-
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
-
-
 
                 try {
                     String jsonData = response.body().string();
@@ -236,37 +205,24 @@ public class Blocks extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(jsonData);
-
                             Object row1 = obj;
-
-
                             row_1 = (JSONObject) row1;
-
-
-
-                            System.out.println(row_1);
-
                         } catch (Throwable t) {
                             System.out.println("nojson");
-                        }
+                            Toast.makeText(Blocks.this, "Error with Service, Please Reload.", Toast.LENGTH_SHORT).show();
 
+                        }
                     } else {
                         alertUserAboutError();
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "x", e);
                 }
-
-
                 latest = (TableLayout) findViewById(R.id.latest_hash);
-
-
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-
 
                         TextView col1 = new TextView(Blocks.this);
                         TextView col2 = new TextView(Blocks.this);
@@ -299,36 +255,18 @@ public class Blocks extends AppCompatActivity {
                         row.addView(col3, lp);
                         row.addView(col4, lp);
                         row.addView(col5, lp);
-
-
                         latest.addView(row, 1);
 
                     }
                 });
-
-
-
-
-
-
-
-
-
-
             }
         });
-
-
     }
-
-
 
     private void alertUserAboutError() {
 
 
     }
-
-
     /* INSERT INTO THE DRAWER */
 
     private void addDrawerItems() {
@@ -339,8 +277,6 @@ public class Blocks extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Blocks.this, "ok", Toast.LENGTH_SHORT).show();
-                System.out.println(id);
                 if(id == 0) {
                     finish();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
