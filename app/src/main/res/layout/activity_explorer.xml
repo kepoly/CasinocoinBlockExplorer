@@ -54,24 +54,6 @@
                     android:textColor="#000" />
             </GridLayout>
 
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/editText"
-                    android:layout_row="2"
-                    android:layout_column="15"
-                    android:hint="Enter Block Height, TX, Hash, Address"
-                    android:singleLine="true"
-                    android:focusableInTouchMode="true"
-                    android:focusable="true" />
-
-
-            </GridLayout>
-
 
             <GridLayout
                 android:layout_width="match_parent"

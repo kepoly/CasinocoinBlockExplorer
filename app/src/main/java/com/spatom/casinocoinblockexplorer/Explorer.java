@@ -46,7 +46,6 @@ public class Explorer extends AppCompatActivity {
     private String mActivityTitle;
     private Button creditsRefreshButton;
     private TableLayout latest;
-    private EditText enterInfo;
 
     private JSONObject row_1;
     private JSONObject row_2;
@@ -63,8 +62,7 @@ public class Explorer extends AppCompatActivity {
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-
-
+        //START THE HTTP CALL TO GET JSON
         String url = "http://csc.blockexp.info/ext/getlasttxs/5/30";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
@@ -76,6 +74,7 @@ public class Explorer extends AppCompatActivity {
 
             }
 
+            //IF GET JSON SUCCEEDS
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
@@ -113,10 +112,7 @@ public class Explorer extends AppCompatActivity {
                     Log.e(TAG, "x", e);
                 }
 
-
                 latest = (TableLayout) findViewById(R.id.latest_tx);
-
-
 
             runOnUiThread(new Runnable() {
                 @Override

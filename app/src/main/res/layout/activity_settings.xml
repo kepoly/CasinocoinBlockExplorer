@@ -47,6 +47,21 @@
 
         <GridLayout
             android:layout_width="match_parent"
+            android:layout_height="20dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Settings are coming soon!"
+                android:id="@+id/textView3"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="16dp" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="25dp">
 
@@ -57,5 +72,6 @@
                 android:id="@+id/settings_home_button"
                 android:background="#a61b22" />
         </GridLayout>
+
     </GridLayout>
 </ScrollView>

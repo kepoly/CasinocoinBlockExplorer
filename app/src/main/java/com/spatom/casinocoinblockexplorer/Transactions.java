@@ -238,9 +238,6 @@ public class Transactions extends AppCompatActivity {
 
 
                             row_1 = (JSONObject) row1;
-
-
-
                             System.out.println(row_1);
 
                         } catch (Throwable t) {
