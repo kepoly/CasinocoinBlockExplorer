@@ -38,38 +38,7 @@ public class Credits extends AppCompatActivity {
 
 
 
-        String url = "http://csc.blockexp.info/ext/summary";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                    if (response.isSuccessful()) {
-                        System.out.println(jsonData);
-                    } else {
-                        alertUserAboutError();
-                    }
-                } catch (IOException e) {
-                    Log.e(TAG, "x", e);
-                }
-            }
-        });
-
 
     }
 
-    private void alertUserAboutError() {
-
-
-    }
 }

@@ -112,7 +112,12 @@ public class Explorer extends AppCompatActivity {
                 } catch (IOException e) {
                     Log.e(TAG, "x", e);
                 }
+
+
                 latest = (TableLayout) findViewById(R.id.latest_tx);
+
+
+
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -120,8 +125,8 @@ public class Explorer extends AppCompatActivity {
                     for(int i = 0; i < 5; i++) {
                         TableRow row = new TableRow(Explorer.this);
                         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-                        lp.setMargins(50, 0, 50 ,0);
-                        row.setLayoutParams(lp);
+                        lp.setMargins(50, 10, 175 ,10);
+
                         TextView col1 = new TextView(Explorer.this);
                         TextView col2 = new TextView(Explorer.this);
                         TextView col3 = new TextView(Explorer.this);
@@ -162,11 +167,11 @@ public class Explorer extends AppCompatActivity {
                         } catch (Throwable e) {
                             System.out.println("bad");
                         }
-                        row.addView(col1);
-                        row.addView(col2);
-                        row.addView(col3);
-                        row.addView(col4);
-                        row.addView(col5);
+                        row.addView(col1, lp);
+                        row.addView(col2, lp);
+                        row.addView(col3, lp);
+                        row.addView(col4, lp);
+                        row.addView(col5, lp);
                         latest.addView(row, i + 1);
                     }
                 }
